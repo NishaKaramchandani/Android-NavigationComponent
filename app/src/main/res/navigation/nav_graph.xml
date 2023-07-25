@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.navigationcomponentexample.view.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_chooseRecipientFragment"
+            app:destination="@id/chooseRecipientFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.example.navigationcomponentexample.view.ViewTransactionFragment"
+        android:label="ViewTransactionFragment"
+        tools:layout="@layout/fragment_view_transaction" />
+    <fragment
+        android:id="@+id/chooseRecipientFragment"
+        android:name="com.example.navigationcomponentexample.view.ChooseRecipientFragment"
+        android:label="ChooseRecipientFragment"
+        tools:layout="@layout/fragment_choose_recipient">
+        <action
+            android:id="@+id/action_chooseRecipientFragment_to_specifyAmountFragment"
+            app:destination="@id/specifyAmountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.example.navigationcomponentexample.view.ViewBalanceFragment"
+        android:label="ViewBalanceFragment"
+        tools:layout="@layout/fragment_view_balance" />
+    <fragment
+        android:id="@+id/specifyAmountFragment"
+        android:name="com.example.navigationcomponentexample.view.SpecifyAmountFragment"
+        android:label="SpecifyAmountFragment"
+        tools:layout="@layout/fragment_specify_amount">
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="recipient"
+            app:argType="string"
+            android:defaultValue="Android" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.example.navigationcomponentexample.view.ConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/fragment_confirmation" >
+        <argument
+            android:name="recipient"
+            app:argType="string"
+            android:defaultValue="Android" />
+        <argument
+            android:name="amount"
+            app:argType="com.example.navigationcomponentexample.data.Money" />
+    </fragment>
+</navigation>
