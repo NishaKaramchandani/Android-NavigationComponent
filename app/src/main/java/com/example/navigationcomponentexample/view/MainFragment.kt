@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponentexample.R
 import com.example.navigationcomponentexample.databinding.FragmentMainBinding
 import com.example.navigationcomponentexample.utils.safeNavigate
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainFragment : Fragment(), View.OnClickListener {
 

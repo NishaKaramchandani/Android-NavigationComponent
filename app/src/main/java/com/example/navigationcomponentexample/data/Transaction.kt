@@ -5,4 +5,8 @@ import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
 @Parcelize
-data class Money(val amount: BigDecimal): Parcelable
+data class Transaction(
+    val id: Int,
+    val name: String,
+    val amount: BigDecimal
+) : Parcelable

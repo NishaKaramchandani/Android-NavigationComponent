@@ -67,9 +67,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <argument
-            android:name="recipient"
-            app:argType="string"
-            android:defaultValue="Android" />
+            android:name="transaction"
+            app:argType="com.example.navigationcomponentexample.data.Transaction" />
     </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
@@ -77,11 +76,7 @@
         android:label="ConfirmationFragment"
         tools:layout="@layout/fragment_confirmation" >
         <argument
-            android:name="recipient"
-            app:argType="string"
-            android:defaultValue="Android" />
-        <argument
-            android:name="amount"
-            app:argType="com.example.navigationcomponentexample.data.Money" />
+            android:name="transaction"
+            app:argType="com.example.navigationcomponentexample.data.Transaction" />
     </fragment>
 </navigation>

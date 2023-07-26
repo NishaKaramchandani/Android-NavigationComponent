@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponentexample.R
-import com.example.navigationcomponentexample.data.Money
+import com.example.navigationcomponentexample.data.Transaction
 import com.example.navigationcomponentexample.databinding.FragmentSpecifyAmountBinding
 import com.example.navigationcomponentexample.utils.safeNavigate
 import java.math.BigDecimal
@@ -33,7 +33,7 @@ class SpecifyAmountFragment : Fragment(), OnClickListener {
         binding.sendBtn.setOnClickListener(this)
         binding.cancelBtn.setOnClickListener(this)
 
-        arguments?.let { SpecifyAmountFragmentArgs.fromBundle(it).recipient }
+        arguments?.let { SpecifyAmountFragmentArgs.fromBundle(it).transaction }
     }
 
     override fun onClick(view: View?) {
@@ -43,9 +43,9 @@ class SpecifyAmountFragment : Fragment(), OnClickListener {
                     if (binding.inputAmount.text.isNullOrBlank()) {
                         Toast.makeText(context, "Please enter amount", Toast.LENGTH_SHORT).show()
                     } else {
-                        val name = arguments?.let { SpecifyAmountFragmentArgs.fromBundle(it).recipient }
+                        val trans = arguments?.let { SpecifyAmountFragmentArgs.fromBundle(it).transaction }!!
                         findNavController().safeNavigate(SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(
-                            Money(BigDecimal(binding.inputAmount.text.toString())), name!!
+                            Transaction(trans.id, trans.name, BigDecimal(binding.inputAmount.text.toString()))
                         ))
                     }
 

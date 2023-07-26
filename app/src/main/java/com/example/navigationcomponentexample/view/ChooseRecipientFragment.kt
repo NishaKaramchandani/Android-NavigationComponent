@@ -7,15 +7,23 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponentexample.R
+import com.example.navigationcomponentexample.data.Transaction
 import com.example.navigationcomponentexample.databinding.FragmentChooseRecipientBinding
 import com.example.navigationcomponentexample.databinding.FragmentSpecifyAmountBinding
 import com.example.navigationcomponentexample.utils.safeNavigate
+import com.example.navigationcomponentexample.viewmodel.MainViewModel
+import java.math.BigDecimal
 
 class ChooseRecipientFragment: Fragment(), OnClickListener {
 
     private lateinit var binding: FragmentChooseRecipientBinding
+
+    private val mainViewModel: MainViewModel by viewModels()
+
+    private var newId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +48,10 @@ class ChooseRecipientFragment: Fragment(), OnClickListener {
                     if (binding.inputRecipient.text.isNullOrBlank()) {
                         Toast.makeText(context, "Please enter a name", Toast.LENGTH_SHORT).show()
                     } else {
+                        newId = mainViewModel.generateTransactionId()
                         findNavController().safeNavigate(
                             ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(
-                                binding.inputRecipient.text.toString()
+                                Transaction(newId, binding.inputRecipient.text.toString(), BigDecimal(0))
                             )
                         )
                     }
